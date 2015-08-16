@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Awesome Counter</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <style>
+      body {
+        margin: 0 40%;
+      }
+      span {
+        color: firebrick;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Character count</h1>
+    <h3>The count is: <span id="counter">0</span></h3>
+
+    <input name="words" placeholder="Enter words">
+    <script>
+      $('input[name=words]').on('input', function(e) {
+        $('#counter').html($(e.target).val().length);
+      });
+    </script>
+  </body>
+</html>
