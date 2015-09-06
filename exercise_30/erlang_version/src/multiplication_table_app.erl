@@ -4,15 +4,21 @@
 -export([main/1, generate/1, print/1, convert_to_string/1]).
 
 main(_Args) ->
-    Num = convert_to_num(lists:nth(1, _Args)),
-    Dim = Num + 1,
+    Num   = convert_to_num(lists:nth(1, _Args)),
     Table = generate(Num),
-    WX = wx:new(),
+    WX    = wx:new(),
     Frame = wxFrame:new(WX, ?wxID_ANY, "Multiplication Table"),
     Grid  = wxGrid:new(Frame, ?wxID_ANY),
+    Dim   = Num + 1,
+
     wxGrid:createGrid(Grid, Dim, Dim),
     [update_grid(Grid, X, Y, Result) || {X, Y, Result} <- Table],
-    wxFrame:show(Frame).
+    wxFrame:show(Frame),
+    loop(Frame).
+
+loop(Frame) ->
+    wxFrame:show(Frame),
+    loop(Frame).
 
 generate(_dimension) ->
     Range = lists:seq(0, _dimension),
