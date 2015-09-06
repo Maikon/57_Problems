@@ -1,0 +1,12 @@
+{application, multiplication_table,
+ [
+  {description, ""},
+  {vsn, "1"},
+  {registered, []},
+  {applications, [
+                  kernel,
+                  stdlib
+                 ]},
+  {mod, { multiplication_table_app, []}},
+  {env, []}
+ ]}.
